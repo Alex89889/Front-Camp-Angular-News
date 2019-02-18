@@ -5,7 +5,7 @@
 <mat-sidenav-container class="example-container">
   <button mat-button (click)="sidenav.open()" ><mat-icon>menu</mat-icon></button>
   <input type='text' #nameInput >  
-  <a  (click)="changeFilter(nameInput.value)"><button mat-button color="primary" >Filter</button></a>
+  <a  (click)="filter()"><button mat-button color="primary" >Filter</button></a>
   <mat-sidenav #sidenav class="example-sidenav">
     <mat-list class="list-nav">
         <mat-list-item class="list-item" *ngFor="let source of mSources" (click)="searchArticles(source.id);sidenav.close();">

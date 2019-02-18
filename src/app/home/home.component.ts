@@ -29,5 +29,9 @@ export class HomeComponent implements OnInit {
 		console.log("selected source is: "+source);
 		this.newsapi.getArticlesByID(source).subscribe(data => this.mArticles = data['articles']);
 	}
+	
+	filter(){
+		console.log("Filter");
+	}
 
 }

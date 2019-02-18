@@ -30,5 +30,9 @@ export class ArticleComponent implements OnInit {
 	this._newsService.add(newsId, headling,shortDescription, content, image, date, auhtor);
 	this.news = this._newsService.getAll();
   }
+  
+  filter(){
+		console.log("Filter");
+	}
 
 }

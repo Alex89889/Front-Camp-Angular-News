@@ -1,4 +1,10 @@
 <mat-sidenav-container class="example-container">
+	<p style="padding: 20px">
+		<input type='text' #nameInput >  
+		<a  (click)="filter()"><button mat-button color="primary" >Filter</button></a>
+	</p>
+  
+
 <mat-card class="example-card"  *ngFor="let listNews of news">
     <mat-card-header>
       
