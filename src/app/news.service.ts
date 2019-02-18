@@ -39,11 +39,10 @@ export class NewsService {
   }
   
   public edit(id: number, headling: string, shortDescription: string, content: string, date: string, auhtor: string ){
-  
     const foundIndex = this.news.findIndex(news => news.id == id);
-	var oneNews = [id, headling, shortDescription, content, date, auhtor];
-    this.news[foundIndex] = oneNews;
-  
+	var oneNews = {id: id, headling: headling, shortDescription: shortDescription, content: content, date: date, auhtor: auhtor};
+    this.news[foundIndex] = oneNews; 
+   
   }
 	
   
