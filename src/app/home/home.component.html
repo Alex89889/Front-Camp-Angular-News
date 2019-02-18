@@ -1,24 +1,11 @@
-<mat-toolbar color="primary">
-  
-  <button mat-button (click)="sidenav.open()" ><mat-icon>menu</mat-icon></button>
-  <input type='text' value='Type your text'>  
-  <button mat-button (click)="newFilter()">Filter</button>
-  <span class="example-spacer"></span>
-  
-  <button mat-button [matMenuTriggerFor]="appMenu"><mat-icon>settings</mat-icon></button>
-  
-</mat-toolbar>
 
-
-<mat-menu #appMenu="matMenu">
-  <a routerLink="/add"><button mat-menu-item> Add article </button></a>
-  <button mat-menu-item> Only created by me </button>
-</mat-menu>
 
 
 
 <mat-sidenav-container class="example-container">
-  
+  <button mat-button (click)="sidenav.open()" ><mat-icon>menu</mat-icon></button>
+  <input type='text' #nameInput >  
+  <a  (click)="changeFilter(nameInput.value)"><button mat-button color="primary" >Filter</button></a>
   <mat-sidenav #sidenav class="example-sidenav">
     <mat-list class="list-nav">
         <mat-list-item class="list-item" *ngFor="let source of mSources" (click)="searchArticles(source.id);sidenav.close();">
@@ -33,6 +20,7 @@
   
 
   <mat-card class="example-card"  *ngFor="let article of mArticles">
+  <div *ngIf="article.title | nameFilter: char">
     <mat-card-header>
       <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/images/'+ article.source.id +'.png)'}" class="example-header-image"></div>
       <mat-card-title class="title">{{article.title}}</mat-card-title>
@@ -43,12 +31,16 @@
       <p>
         {{article.description}}
       </p>
-	  <button mat-button color="primary">Read more...</button>
+	  
+	  <p>
+        Date: {{article.publishedAt | date:"dd/MM/yyyy"}}
+      </p>
+	  <a href ="{{article.url}}"><button mat-button color="primary" >Read more...</button></a>
     </mat-card-content>
     <mat-card-actions class="action-buttons">
-     <a routerLink="/edit"><button mat-button color="primary">Edit</button></a>
-      <button mat-button color="primary">Delete</button>
+   
     </mat-card-actions>
+  </div>
   </mat-card>
 <mat-toolbar color="primary">
     <div class="eco_copyight">Powered by  <a href="https://newsapi.org" class="eco_color5">NEWS API</a> </div>

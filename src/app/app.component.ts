@@ -9,6 +9,6 @@ import { NewsApiService } from './news-api.service';
 })
 export class AppComponent {
 
-	
+
   
 }

@@ -14,13 +14,12 @@ export class HomeComponent implements OnInit {
 	constructor(private newsapi:NewsApiService){
 		console.log('app component constructor called');         
 	}
-	newFilter(){
-		console.log("Filter");
-	}
+	
 
 	ngOnInit() {
         //load articles
 	    this.newsapi.initArticles().subscribe(data => this.mArticles = data['articles']);
+		
 		//load news sources
 		this.newsapi.initSources().subscribe(data=> this.mSources = data['sources']);	
     }
